@@ -10,18 +10,30 @@
     <form>
         <label>Digite seu peso(kg)</label>
         <input type="number" id="peso" step="0.1">
-
+        
         <label>Digite sua altura(m)</label>
         <input type="number" id="altura" step="0.1">
         <input type="button" value="Calcular" onclick="calculoIMC()">
     </form>
     <div id="imcResultado"></div>
+    <div id="imcResultado2"></div>
     <script>
         function calculoIMC(){
         const peso = parseFloat(document.getElementById("peso").value)
         const altura = parseFloat(document.getElementById("altura").value)
         const imc = peso/(altura*altura)
         document.getElementById("imcResultado").textContent="IMC: "+imc.toFixed(2)
+        if(imc<18.5){
+            document.getElementById("imcResultado2").textContent=" Você está abaixo do peso."
+        }
+        else if(imc<24.99){
+            document.getElementById("imcResultado2").textContent=" Você está no peso normal."
+        }
+        else if(imc<29.99){
+            document.getElementById("imcResultado2").textContent=" Você está com sobrepeso."
+        }
+        else{
+            document.getElementById("imcResultado2").textContent=" Você está obeso."
         }
     </script>
 </body>
